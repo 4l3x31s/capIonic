@@ -1,0 +1,29 @@
+<ion-view view-title="Capacitación Ionic">
+  <ion-content>
+    <h2>Capacitación Ionic</h2>
+    <h3>Expresiones</h3>
+    Suma con expresiones: {{ 4 + 5 }}
+    <div ng-init="cantidad=1;precio=5">
+      <p>Cantidad total = {{cantidad * precio}}</p>
+    </div>
+    <div ng-init="cantidad=1;precio=5">
+      <p>Cantidad total con etiqueta = <span ng-bind="cantidad * precio"></span></p>
+    </div>
+    <div>
+      <h4>Filtros de Datos</h4>
+      {{'LOWERCASE' | lowercase}}<br />
+      {{'uppercase' | uppercase}}
+      <h5>Monedas</h5>
+      {{56 | currency}} <br/>
+      Moneda Personalizada {{ 56 | currency:'Bs'}}
+      <h5>Limit To</h5>
+      {{ listaDatos | limitTo:2}}
+      <h5>Fechas</h5>
+      {{"2016-01-05T09:05:05.035Z" | date}}<br/>
+      {{"2016-01-05"|date : "fullDate"}}<br/>
+      {{"2016-01-05"|date : "dd-MM-yyyy"}}
+      <h5>JSON</h5>
+      {{ObjetoPrueba | json}}
+    </div>
+  </ion-content>
+</ion-view>

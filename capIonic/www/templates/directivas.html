@@ -1,0 +1,44 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <div>
+      <h2>Directivas</h2>
+      <h4>ng-model</h4>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Nombre</span>
+        <input type="text" ng-model="nombre" placeholder="Nombre">
+      </label>
+      Hola <b>{{nombre}}</b>
+      <br/>
+      <h4>ng-click</h4>
+      <input type="button" class="button button-positive" value="Click" ng-click="showAlert()">
+      <h4>ng-init</h4>
+      <button class="button button-positive" ng-click="count = count + 1" ng-init="count = 0">Sumar</button>
+      <br/>
+      Variable Count:<span>{{count}}</span><br/>
+      <h4>ng-repeat</h4>
+      <ul ng-repeat="obj in ObjetoPrueba">
+        <li>{{obj.nombre}} {{obj.apellido}}</li>
+      </ul>
+      <br/>
+      <h4>ng-change</h4>
+      <input type="checkbox" ng-model="si" ng-change="aFavor()"> A favor
+      <input type="checkbox" ng-model="no" ng-change="enContra()"> En contra
+      <h5>Total Votos: {{total}}</h5>
+      <h4>ng-hide - ng-show</h4>
+      <input type="checkbox" ng-model="dato1"> Mostrar
+      <input type="checkbox" ng-model="dato2"> Ocultar
+      <h3 ng-show="dato1">@frontendlabs 1</h3>
+      <h3 ng-hide="dato2">@frontendlabs 2</h3>
+      <h4>ng-bind</h4>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Apellido</span>
+        <input type="text" ng-model="apellido" placeholder="Apellido">
+      </label>
+      <span>{{apellido}}</span>
+      <span ng-bind="apellido"></span>
+      <h2>Directivas Personalizadas</h2>
+      <div mi-cliente></div>
+      <h2>Fin</h2>
+    </div>
+  </ion-content>
+</ion-view>

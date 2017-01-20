@@ -22,7 +22,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
-
+.directive('miCliente', function () {
+  return {
+    template: 'Nombre: {{cliente.nombre}} Dirección: {{cliente.direccion}}'
+  };
+})
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -32,15 +36,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
+    .state('app', {
+    url: '/app',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/menu.html'
   })
-
+    .state('app.directivas', {
+      url: '/directivas',
+      views:{
+        'menuContent':{
+          templateUrl: 'templates/directivas.html',
+          controller:"directivasCtrl"
+        }
+      }
+    })
+    .state('app.databind', {
+      url: '/databind',
+      views:{
+        'menuContent':{
+          templateUrl: 'templates/databind.html',
+          controller:"DataBindCtrl"
+        }
+      }
+    })
+    .state('app.tab', {
+      url: '/tab',
+      views:{
+        'menuContent':{
+          templateUrl: 'templates/tabs.html'
+        }
+      }
+    })
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('app.tab.dash', {
     url: '/dash',
     views: {
       'tab-dash': {
@@ -50,7 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
+  .state('app.tab.chats', {
       url: '/chats',
       views: {
         'tab-chats': {
@@ -59,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.chat-detail', {
+    .state('app.tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
         'tab-chats': {
@@ -69,7 +98,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('tab.account', {
+  .state('app.tab.account', {
     url: '/account',
     views: {
       'tab-account': {
@@ -77,9 +106,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
+  })
+  .state('app.tab.tutorial', {
+    url: '/tutorial',
+    views: {
+      'tab-tutorial': {
+        templateUrl: 'templates/tab-tutorial.html',
+        controller: 'TutorialCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/app/tab');
 
 });
